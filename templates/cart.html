@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <!-- End Top Search -->
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box" style="background: url(/static/images/Herbal-teas_1-1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>سبد خرید</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">فروشگاه</a></li>
+                        <li class="breadcrumb-item active">سبدخرید</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Cart  -->
+    <div class="cart-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>تصویر</th>
+                                    <th>نام محصول</th>
+                                    <th>قیمت</th>
+                                    <th>تعداد</th>
+                                    <th>قیمت کل</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in shoppingcart_items %}
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="#">
+									<img class="img-fluid" src="{{ item.product.image.url }}" alt="" />
+								</a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="{% url 'product-detail' product_id=item.product_id %}">
+                                            {{ item.product.title}}
+								</a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p>{{ item.product.price }}تومان</p>
+                                    </td>
+                                    <td class="quantity-box">{{ item.quantity }}        <span><a href="{% url 'sub_quantity' product_id=item.id%}">↓</a></span>  <span><a href="{% url 'add_quantity' product_id=item.id%}">↑</a></span></td>
+                                    <td class="total-pr">
+                                        <p>{{ item.get_total }} تومان</p>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-5">
+                <div class="col-lg-6 col-sm-6">
+
+                </div>
+
+            </div>
+
+            <div class="row my-5">
+                <div class="col-lg-8 col-sm-12"></div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="order-box">
+                        <h3>جزئیات سبد خرید</h3>
+                        <div class="d-flex">
+                            <h4>قیمت کل </h4>
+                            <div class="ml-auto font-weight-bold"> {{ shoppingcart.get_cart_total_price }} تومان </div>
+                        </div>
+                        <div class="d-flex">
+                            <h4>تخفیف</h4>
+                            <div class="ml-auto font-weight-bold">تومان 0 </div>
+                        </div>
+                        <hr class="my-1">
+
+                        <div class="d-flex gr-total">
+                            <h5>قیمت کل سبد خرید</h5>
+                            <div class="ml-auto h5"> {{ shoppingcart.get_cart_total_price }} تومان </div>
+                        </div>
+                        <hr> </div>
+                </div>
+                <div class="col-12 d-flex shopping-box"><a href="{% url 'check_out' cart_id=shoppingcart.id %}" class="ml-auto btn hvr-hover">پرداخت</a> </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Cart -->
+
+    <!-- Start Instagram Feed  -->
+    <div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-01.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-02.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-03.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-04.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-06.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-07.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-08.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-09.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Instagram Feed  -->
+
+{% endblock %}

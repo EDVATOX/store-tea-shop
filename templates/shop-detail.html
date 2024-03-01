@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block body %}
+    <!-- Start All Title Box -->
+    <div class="all-title-box" style="background: url(/static/images/Herbal-teas_1-1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>{{ product.title }}</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">فروشگاه</a></li>
+                        <li class="breadcrumb-item active">جزییات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Shop Detail  -->
+    <div class="shop-detail-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active"> <img class="d-block w-100" src="{{ product.image.url }}" alt="First slide"> </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
+						<i class="fa fa-angle-left" aria-hidden="true"></i>
+						<span class="sr-only">Previous</span>
+					</a>
+                        <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+						<span class="sr-only">Next</span>
+					</a>
+
+                    </div>
+                </div>
+                <div  class="col-xl-7 col-lg-7 col-md-6">
+                    <div class="single-product-details">
+                        <h2>{{ product.title }}</h2>
+                        <h5>  {{ product.price }} تومان </h5>
+                        <p class="available-stock"><span> تعداد موجود {{ product.num_of_buy }}</span><p>
+						<h4>توضیحات</h4>
+						<p> {{ product.description }} </p>
+
+						<div class="price-box-bar">
+							<div class="cart-and-bay-btn">
+
+								<a class="btn hvr-hover" data-fancybox-close="" href="{% url 'add' product_id=product.id %}">افزودن به سبد خرید</a>
+							</div>
+						</div>
+
+						<div class="add-to-btn">
+
+
+						</div>
+                    </div>
+                </div>
+            </div>
+
+			<div dir="rtl" class="row my-5">
+				<div class="card card-outline-secondary my-4">
+					<div class="card-header">
+						<h3 align="right">نظرات این محصول</h3>
+					</div>
+					<div class="card-body">
+                    <form method="post" action="{% url 'comment' pk=product.id%}">
+                            {% csrf_token %}
+                            <div align="right" class="form-group quantity-box">
+                            <label>موضوع</label>
+                            {{ form.title }}
+                            <br>
+                                <label>توضیحات</label>
+                            {{ form.text }}
+                                <br>
+
+                            </div>
+ <button type="submit" class="btn hvr-hover" style="color: #FFFFFF">افزودن نظر</button>
+                        <hr>
+                        <hr>
+                            <hr>
+                        </form>
+                        {% for i in comment %}
+                        <div class="media mb-3">
+							<div class="mr-2">
+								<h2 align="right">{{ i.user.username }}</h2>
+                                <br>
+							</div>
+                            <br>
+							<div class="media-body">
+                                <br>
+								<h2 align="right">{{ i.title }} :</h2>
+								<h5 align="right" class="text-muted">{{ i.text }}</h5>
+							</div>
+						</div>
+
+						<hr>
+                        {% endfor %}
+
+
+
+					</div>
+				  </div>
+			</div>
+
+
+        </div>
+    </div>
+    <!-- End Instagram Feed  -->
+
+{% endblock %}

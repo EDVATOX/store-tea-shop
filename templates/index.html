@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+    <!-- End Top Search -->
+
+    <!-- Start Slider -->
+{% block body %}
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="/static/images/istockphoto-484005856-1024x1024.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 style="font-family: 'Vazirmatn', sans-serif;" class="m-b-20"><strong>به سایت تی شاپ خوش امدید</strong></h1>
+                            <p class="m-b-40">فروش انواع دمنوش ها و چایی های گیاهی و میوه ای برای سلامتی شما</p>
+                            <p><a class="btn hvr-hover" href="{% url 'shop' %}">مشاهده محصولات</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="/static/images/istockphoto-519311416-1024x1024.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 style="font-family: 'Vazirmatn', sans-serif;" class="m-b-20"><strong>به سایت تی شاپ خوش امدید</strong></h1>
+                            <p class="m-b-40">فروش انواع دمنوش ها و چایی های گیاهی و میوه ای برای سلامتی شما</p>
+                            <p><a class="btn hvr-hover" href="{% url 'shop' %}">مشاهده محصولات</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="/static/images/istockphoto-1199719399-1024x1024.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                             <h1 style="font-family: 'Vazirmatn', sans-serif;" class="m-b-20"><strong>به سایت تی شاپ خوش امدید</strong></h1>
+                            <p class="m-b-40">فروش انواع دمنوش ها و چایی های گیاهی و میوه ای برای سلامتی شما</p>
+                            <p><a class="btn hvr-hover" href="{% url 'shop' %}">مشاهده محصولات</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- End Slider -->
+
+    <!-- Start Categories  -->
+    <div dir="rtl" class="categories-shop">
+        <div class="container">
+            <div class="row">
+                {% for i in category %}
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="{{ i.icon.url }}" alt="" />
+                        <a class="btn hvr-hover" href="{% url 'category' category=i.name%}">{{ i.name }}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End Categories -->
+	
+	<div class="box-add-products">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+						<img class="img-fluid" src="/static/images/Herbal-teas_1-1.jpg" alt="" />
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+						<img class="img-fluid" src="/static/images/3596831.jpg" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Start Products  -->
+    <div class="products-box">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>محصولات اخیر</h1>
+                        <p>در دسته بندی چای , قهوه و دمنوش ها</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row special-list">
+{% for i in products2 %}
+                <div  class="col-lg-3 col-md-6 special-grid top-featured">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="new">New</p>
+                            </div>
+                            <img src="{{ i.image.url }}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+
+                                </ul>
+                                <a class="cart" href="{% url 'add' product_id=i.id %}">افزودن به سبد خرید</a>
+                            </div>
+                        </div>
+                        <a href="{% url 'product-detail' product_id=i.id %}"><div class="why-text">
+                            <h4>{{ i.title }}</h4>
+                            <h5> {{ i.price }} تومان</h5>
+                        </div></a>
+                    </div>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End Products  -->
+
+    <!-- Start Blog  -->
+
+    <!-- End Blog  -->
+
+
+    <!-- Start Instagram Feed  -->
+
+    <!-- End Instagram Feed  -->
+{% endblock %}
+
+    <!-- Start Footer  -->
